@@ -1,83 +1,97 @@
 
 # API
 
-## signup
-```
-method: post,
-url: http://localhost:6000/api/register,
-
-input json body: 
-{
-	"username":"atanu23",
-	"password":"1234test",
-	"email":"atanu123@gmail.com",
-	"name":"ATANU PRAMANIK"
-	
-}
-access token as output will be generated.
-
-```
-
-## login
-
-```
-method: post
-url: http://localhost:6000/api/login
-
-input body:
-{
-	"username":"atanu23",
-	"password":"1234test"
-}
-access token as output will be generated.
-```
 
 ## create task
 
 ```
 method: post
-url: http://localhost:6000/api/createtask
+url: http://localhost:6000/createtasks
 
 json body input :
+
 {
-	"desc":"this is new task deadpool"
+  "title": "Complete Project Documentation",
+  "desc": "Finish writing the project documentation before the deadline.",
+  "dueDate": "2024-09-07T12:00:00Z",
+  "labels": ["work", "urgent"],
+  "priority": "High",
+  "reminder": "2024-09-06T10:00:00Z",
+  "custom": "Weekly"
 }
 
-headers:
-auth    <access_token>
 
-```
-## mark task as complete
-
-```
-method: post
-url:http://localhost:6000/api/taskmark
-
-json body input:
-{
-	"task_id":"66d206224080800685ff0163"
-}
-
-headers:
-auth    <access_token>
 ```
 
 ## get all tasks
 
 ```
 method: get
-url: http://localhost:6000/api/taskslist
+url: http://localhost:6000/tasks
 
-headers:
-auth  <access_Token>
+
 ```
+## update task
+
+```
+method: put
+url: http://localhost:6000/updatetasks/:taskId
+
+{
+  "title": "Update Project Documentation",
+  "desc": "Add recent changes to the project documentation.",
+  "priority": "Medium"
+}
+
+```
+
 ## delete task
 
 ```
-method: post
-url: http://localhost:6000/api/taskdelete
+method: delete
+url: http://localhost:6000/deletetasks/:taskId
 
-headers: 
-auth <access_token>
+
+```
+
+## add subtask
+
+```
+method: post
+url: http://localhost:6000/tasks/:taskId/subtasks
+
+json body:
+
+{
+  "title": "4334ask 2t33432n",
+  "dueDate": "2024-09-06T12:00:00Z"
+}
+
+
+```
+
+## update subtask
+
+```
+method: put
+url: http://localhost:6000/tasks/:taskId/subtasks/:subtaskId
+
+json body:
+
+{
+  "title": "Write Conclusion Section",
+  "dueDate": "2024-09-07T15:00:00Z"
+}
+
+
+```
+
+## delete subtask
+
+```
+method: delete
+url: http://localhost:6000/tasks/:taskId/subtasks/:subtaskId
+
+
 
 ```
