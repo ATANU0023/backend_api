@@ -8,7 +8,12 @@ import taskRoute from './routes/taskRoute.js'
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: '*', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  //allowedHeaders: ['Content-Type'] // Allowed headers
+})); 
+
 app.use(express.json());
 app.use('/',taskRoute);
 
