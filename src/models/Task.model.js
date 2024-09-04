@@ -20,7 +20,7 @@ const TaskSchema = new mongoose.Schema({
         required:true,
     },
     dueDate:{
-        Date,
+        type:Date,
     },
     labels:[String],
     frequency:{
@@ -44,7 +44,7 @@ const TaskSchema = new mongoose.Schema({
     isCompleted:{
         type:Boolean,
         default:false,
-        required:true,
+        //required:true,
     },
     createdAt:{
         type: Date, default: Date.now
